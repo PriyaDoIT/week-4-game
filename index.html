@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Sports Collector</title>
     <title>Sports Collector</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,7 +19,7 @@
 
     <div class = "container-fluid">
         <div class ="row">
-            <div class= "column-md-6">
+            <div class= "column-md-6 text">
                 <p> You will be given a random number at the start of the game.</p>
                 <p> There are Chicago sports teams below.  By clicking on a logo you will add a specific amount of points to your total score.</p>
                 <p>You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
@@ -37,13 +37,15 @@
 
             <div class="column-md-4 tracker">
                 <p>Your total score is:</p>
-                <p class="sum big"></p>
+                <p class="counter big"></p>
             </div>
         
       
         <div class="column-md-4 tracker">
-            <p>Wins:<span class="wins"></span></p>
-            <p>Losses:<span class="lose"></span></p>
+            <p>Wins:</p>
+            <p class="wins"></p>
+            <p>Losses:</p>
+            <p class="losses"></p>
          </div>
     </div>
 
@@ -65,6 +67,7 @@
         <div class="row">
             <div class="column-md-12 outcome">
             <p><span class="outcome"></span></p>
+            
             </div>
         </div>
 
@@ -73,62 +76,82 @@
        
     <script type="text/javascript">
 
-    var wins=0;
-    var losses=0;
-
         $(document).ready(function() {
+            var wins = 0;
+            var losses = 0;
             //decalare variables
                 var target = Math.floor(Math.random() * (110 - 19 + 1)) + 19;
                     console.log("target " + target);
     
-                // crystal 1
+                // team 1
                  var bears = Math.floor(Math.random() * 11) + 1;
                     console.log("bears: " + bears);
-                //crystal 1
+                //team 2
                 var bulls = Math.floor(Math.random() * 11) + 1;
                     console.log("bulls: "+ bulls);
-                //crystal 3
+                //team 3
                 var cubs = Math.floor(Math.random() * 11) + 1;
                 console.log("cubs: "+ cubs);
-                //crystal 4
+                //team 4
                 var hawks = Math.floor(Math.random() * 11) + 1;
                 console.log("hawks: " +hawks);
 
-                var sum = 0
+                var counter = 0;
 
             // give each image a value
-                $(".bears").attr("btn",bears);
-                $(".bulls").attr("btn",bulls);
-                $(".cubs").attr("btn",cubs);
-                $(".hawks").attr("btn",hawks);
+                $(".bears").attr("data-teamvalue",bears);
+                $(".bulls").attr("data-teamvalue",bulls);
+                $(".cubs").attr("data-teamvalue",cubs);
+                $(".hawks").attr("data-teamvalue",hawks);
+
+            //Reset Function
+
+            var reset = function(){
+                $(".target, .counter, .outcome,.btn, .click").empty()
+
+                var target = Math.floor(Math.random() * (110 - 19 + 1)) + 19;
+                    console.log("newtarget " + target);
+                var bears = Math.floor(Math.random() * 11) + 1;
+                    console.log("newbears: " + bears);
+                var bulls = Math.floor(Math.random() * 11) + 1;
+                    console.log("newbulls: "+ bulls);
+                var cubs = Math.floor(Math.random() * 11) + 1;
+                console.log("newcubs: "+ cubs);
+                var hawks = Math.floor(Math.random() * 11) + 1;
+                console.log("newhawks: " +hawks);
+                var counter = 0;
+
+            // give each image a value
+                $(".bears").attr("data-teamvalue",bears);
+                $(".bulls").attr("data-teamvalue",bulls);
+                $(".cubs").attr("data-teamvalue",cubs);
+                $(".hawks").attr("data-teamvalue",hawks);
+            }
 
             // Click any logo to begin game; target number to guess is displayed
             $(".btn").on("click", function() {
                 $(".target").text(target);
                     console.log(target)
                 
-                    
-                bears = parseInt(bears);
-                bulls = parseInt(bulls);
-                cubs = parseInt(cubs);
-                hawks = parseInt(hawks);
-
-                // Sum clicks
-                var sum = parseInt(($(this).attr("btn")));
-                sum += $(this).val();
-   
+                var teamValue = ($(this).attr("data-teamvalue"));
+                teamValue = parseInt(teamValue);
+                // We then add the btn to the user's "counter" which is a global variable.
+                // Every click, from every btn adds to the global counter.
+                counter += teamValue;
 
                 // Display Sum
-                $(".sum").text(sum);
+                $(".counter").text(counter);
    
                 // Win or Lose
-                if (sum>target){
+                if (counter>target){
                     $(".outcome").text("You Lose!");
-                    losses++;
+                    $(".losses").text(++losses);
+                    reset();
                 }
-                else if (sum === target){
+                else if (counter === target){
                     $(".outcome").text("You Win!");
-                    wins++;
+                    $(".wins").text(++wins);
+                    reset();
                 }
                 
  
