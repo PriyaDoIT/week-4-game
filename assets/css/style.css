@@ -23,35 +23,27 @@ header{
     color: red;
 }
 
-.score {
-    background-color: #B3DDF2;
-    width: 150px;
-    height: 100px;
-    font-size: 35px;
-    text-align: center;
-    float: left;
-    margin-bottom: 20px;
-}
-
 .tracker{
     background-color: #B3DDF2;
     width: 200px;
     height: 100px;
-    font-size: 15px;
     text-align: center;
-    float: left;
+    float:left;
     margin-bottom: 20px;
 }
-.sum{
+
+
+.outcome{
     background-color: #B3DDF2;
-    width: 150px;
+    width: 600px;
     height: 100px;
-    font-size: 35px;
     text-align: center;
+    float:left;
+    margin-bottom: 25px;
+    font-size:35px;
     
 }
 
-.sum p{
-    font-size:10px;
+.big{
+    font-size: 35px;
 }
-

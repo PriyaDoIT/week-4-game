@@ -19,7 +19,7 @@
 
     <div class = "container-fluid">
         <div class ="row">
-            <div class= "column-md-8">
+            <div class= "column-md-6">
                 <p> You will be given a random number at the start of the game.</p>
                 <p> There are Chicago sports teams below.  By clicking on a logo you will add a specific amount of points to your total score.</p>
                 <p>You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
@@ -27,19 +27,26 @@
                 <p>Each time when the game starts, the game will change the values of each team.</p>
                 </div>
             </div>
-        <div class ="row">
-            <div class="column-md-3 score">
-              
-                <p><span class="target"></span></p>
-            </div>
-           
-            <div class="column-md-4 tracker">
-                    <p><span class="outcome"></span></p>
-                    <p>Wins:<span class="wins"></span></p>
-                    <p>Losses:<span class="lose"></span></p>
 
+        <div class ="row">
+            <div class="column-md-4 tracker">
+                    <p>Target Score:</p>
+                <p class="target big"></p>
             </div>
-        </div>
+       
+
+            <div class="column-md-4 tracker">
+                <p>Your total score is:</p>
+                <p class="sum big"></p>
+            </div>
+        
+      
+        <div class="column-md-4 tracker">
+            <p>Wins:<span class="wins"></span></p>
+            <p>Losses:<span class="lose"></span></p>
+         </div>
+    </div>
+
         <div class="row">
             <div class="column-md-2">
                 <img class="img-responsive btn bears" src="assets/images/bears.png" alt="bears">
@@ -54,15 +61,15 @@
                  <img class="img-responsive btn hawks" src="assets/images/hawks.png" alt="hawks">
             </div>
         </div>
-        <div class ="row">
-            <div class="column-md-4 tracker">
-                <p>Your total score is:</p>
-                <p><span class="sum"></span></p>
+
+        <div class="row">
+            <div class="column-md-12 outcome">
+            <p><span class="outcome"></span></p>
             </div>
-        </div>  
+        </div>
 
     </div> 
-
+ 
        
     <script type="text/javascript">
 
