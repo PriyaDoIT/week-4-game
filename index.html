@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <title>Sports Collector</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+</head>
+<body>
+         <link rel="stylesheet" href="assets/css/style.css">  
+         <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+    <header>
+        <h1>Sports Collector</h1>
+    </header>
+
+    <div class = "container-fluid">
+        <div class ="row">
+            <div class= "column-md-8">
+                <p> You will be given a random number at the start of the game.</p>
+                <p> There are Chicago sports teams below.  By clicking on a logo you will add a specific amount of points to your total score.</p>
+                <p>You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
+                <p>The value of each team is hidden from you until you click on it.</p>
+                <p>Each time when the game starts, the game will change the values of each team.</p>
+                </div>
+            </div>
+        <div class ="row">
+            <div class="column-md-3 score">
+              
+                <p><span class="target"></span></p>
+            </div>
+           
+            <div class="column-md-4 tracker">
+                    <p><span class="outcome"></span></p>
+                    <p>Wins:<span class="wins"></span></p>
+                    <p>Losses:<span class="lose"></span></p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-md-2">
+                <img class="img-responsive btn bears" src="assets/images/bears.png" alt="bears">
+            </div>
+            <div class="column-md-2">
+                <img class="img-responsive btn bulls" src="assets/images/bulls.png" alt="bulls">
+            </div>
+            <div class="column-md-2">
+                <img class="img-responsive btn cubs" src="assets/images/cubs.png" alt="cubs">
+            </div>
+            <div class="column-md-2">
+                 <img class="img-responsive btn hawks" src="assets/images/hawks.png" alt="hawks">
+            </div>
+        </div>
+        <div class ="row">
+            <div class="column-md-4 tracker">
+                <p>Your total score is:</p>
+                <p><span class="sum"></span></p>
+            </div>
+        </div>  
+
+    </div> 
+
+       
+    <script type="text/javascript">
+
+    var wins=0;
+    var losses=0;
+
+        $(document).ready(function() {
+            //decalare variables
+                var target = Math.floor(Math.random() * (110 - 19 + 1)) + 19;
+                    console.log("target " + target);
+    
+                // crystal 1
+                 var bears = Math.floor(Math.random() * 11) + 1;
+                    console.log("bears: " + bears);
+                //crystal 1
+                var bulls = Math.floor(Math.random() * 11) + 1;
+                    console.log("bulls: "+ bulls);
+                //crystal 3
+                var cubs = Math.floor(Math.random() * 11) + 1;
+                console.log("cubs: "+ cubs);
+                //crystal 4
+                var hawks = Math.floor(Math.random() * 11) + 1;
+                console.log("hawks: " +hawks);
+
+                var sum = 0
+
+            // give each image a value
+                $(".bears").attr("btn",bears);
+                $(".bulls").attr("btn",bulls);
+                $(".cubs").attr("btn",cubs);
+                $(".hawks").attr("btn",hawks);
+
+            // Click any logo to begin game; target number to guess is displayed
+            $(".btn").on("click", function() {
+                $(".target").text(target);
+                    console.log(target)
+                
+                    
+                bears = parseInt(bears);
+                bulls = parseInt(bulls);
+                cubs = parseInt(cubs);
+                hawks = parseInt(hawks);
+
+                // Sum clicks
+                var sum = parseInt(($(this).attr("btn")));
+                sum += $(this).val();
+   
+
+                // Display Sum
+                $(".sum").text(sum);
+   
+                // Win or Lose
+                if (sum>target){
+                    $(".outcome").text("You Lose!");
+                    losses++;
+                }
+                else if (sum === target){
+                    $(".outcome").text("You Win!");
+                    wins++;
+                }
+                
+ 
+            });
+        });
+        </script>
+
+</body>   
+</html>
