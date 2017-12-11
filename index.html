@@ -41,7 +41,7 @@
             </div>
         
       
-        <div class="column-md-4 tracker">
+        <div class="column-md-4 tracker spacing">
             <p>Wins:</p>
             <p class="wins"></p>
             <p>Losses:</p>
@@ -107,9 +107,8 @@
             //Reset Function
 
             var reset = function(){
-                $(".target, .counter, .outcome,.btn, .click").empty()
 
-                var target = Math.floor(Math.random() * (110 - 19 + 1)) + 19;
+                target = Math.floor(Math.random() * (110 - 19 + 1)) + 19;
                     console.log("newtarget " + target);
                 var bears = Math.floor(Math.random() * 11) + 1;
                     console.log("newbears: " + bears);
@@ -119,7 +118,7 @@
                 console.log("newcubs: "+ cubs);
                 var hawks = Math.floor(Math.random() * 11) + 1;
                 console.log("newhawks: " +hawks);
-                var counter = 0;
+                 counter = 0;
 
             // give each image a value
                 $(".bears").attr("data-teamvalue",bears);
@@ -128,17 +127,20 @@
                 $(".hawks").attr("data-teamvalue",hawks);
             }
 
+            
+
             // Click any logo to begin game; target number to guess is displayed
             $(".btn").on("click", function() {
                 $(".target").text(target);
                     console.log(target)
+                $(".outcome").empty();
                 
                 var teamValue = ($(this).attr("data-teamvalue"));
                 teamValue = parseInt(teamValue);
                 // We then add the btn to the user's "counter" which is a global variable.
                 // Every click, from every btn adds to the global counter.
                 counter += teamValue;
-
+                    console.log("counter: " +counter)
                 // Display Sum
                 $(".counter").text(counter);
    
